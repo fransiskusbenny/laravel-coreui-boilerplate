@@ -14,17 +14,17 @@ class MenuRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255',
+            'name'      => 'required|string|max:255',
             'parent.id' => [
                 'nullable',
-                'exists:menus,id'
+                'exists:menus,id',
             ],
-            'url' => 'nullable|max:255',
-            'icon' => 'nullable|string|max:255',
-            'order' => 'nullable|numeric|max:100',
-            'permissions' => 'nullable|array',
+            'url'            => 'nullable|max:255',
+            'icon'           => 'nullable|string|max:255',
+            'order'          => 'nullable|numeric|max:100',
+            'permissions'    => 'nullable|array',
             'permissions.id' => 'nullable|exists:permissions,id',
-            'active' => 'boolean'
+            'active'         => 'boolean',
         ];
     }
 

@@ -11,22 +11,24 @@ class MenuController extends Controller
 {
     /**
      * Display a listing of the resource.
+     *
      * @return Response
      */
     public function index()
     {
         $menus = Menu::has('parent', 0)
-            ->with(['childs' => function($q) {
+            ->with(['childs' => function ($q) {
                 $q->orderBy('order');
             }])->orderBy('order')->get();
-
 
         return view('settings::menu.index', compact('menus'));
     }
 
     /**
      * Store a newly created resource in storage.
+     *
      * @param MenuRequest $request
+     *
      * @return Response
      */
     public function store(MenuRequest $request)
@@ -54,8 +56,10 @@ class MenuController extends Controller
 
     /**
      * Update the specified resource in storage.
+     *
      * @param MenuRequest $request
-     * @param Menu $menu
+     * @param Menu        $menu
+     *
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */
     public function update(MenuRequest $request, Menu $menu)
@@ -73,13 +77,15 @@ class MenuController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     *
      * @param Menu $menu
-     * @return Response
+     *
      * @throws \Exception
+     *
+     * @return Response
      */
     public function destroy(Menu $menu)
     {
-
         $menu->permissions()->detach();
 
         $menu->delete();

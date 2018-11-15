@@ -26,13 +26,13 @@ class UsersTableSeeder extends Seeder
     {
         return [
             [
-                'id' => 1,
-                'name' => 'Root Admin',
+                'id'       => 1,
+                'name'     => 'Root Admin',
                 'username' => 'root',
-                'email' => 'root@email.com',
+                'email'    => 'root@email.com',
                 'password' => \Hash::make('secret'),
-                'active' => true,
-            ]
+                'active'   => true,
+            ],
         ];
     }
 }

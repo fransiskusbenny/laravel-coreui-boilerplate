@@ -44,51 +44,51 @@ class MenusTableSeeder extends Seeder
     {
         return [
             [
-                'id' => 1,
-                'name' => 'Dashboard',
-                'url' => '/',
-                'icon' => 'fas fa-tachometer-alt',
-                'order' => 0,
+                'id'     => 1,
+                'name'   => 'Dashboard',
+                'url'    => '/',
+                'icon'   => 'fas fa-tachometer-alt',
+                'order'  => 0,
                 'active' => true,
             ],
             [
-                'id' => 2,
-                'name' => 'Settings',
-                'icon' => 'fas fa-cog',
-                'order' => 99,
-                'active' => true,
+                'id'          => 2,
+                'name'        => 'Settings',
+                'icon'        => 'fas fa-cog',
+                'order'       => 99,
+                'active'      => true,
                 'permissions' => [
-                    'manage-settings'
-                ]
+                    'manage-settings',
+                ],
             ],
             [
-                'id' => 3,
-                'parent_id' => 2,
-                'name' => 'Secuity',
-                'icon' => 'fas fa-shield-alt',
-                'order' => 0,
-                'active' => true,
+                'id'          => 3,
+                'parent_id'   => 2,
+                'name'        => 'Secuity',
+                'icon'        => 'fas fa-shield-alt',
+                'order'       => 0,
+                'active'      => true,
                 'permissions' => [
-                    'manage-security'
-                ]
+                    'manage-security',
+                ],
             ],
             [
-                'id' => 4,
+                'id'        => 4,
                 'parent_id' => 3,
-                'name' => 'Manage Users',
-                'icon' => 'fas fa-shield-alt',
-                'url' => 'auth/users',
-                'order' => 0,
-                'active' => true,
+                'name'      => 'Manage Users',
+                'icon'      => 'fas fa-shield-alt',
+                'url'       => 'auth/users',
+                'order'     => 0,
+                'active'    => true,
             ],
             [
-                'id' => 5,
+                'id'        => 5,
                 'parent_id' => 3,
-                'name' => 'Roles & Permissions',
-                'icon' => 'fas fa-lock',
-                'order' => 1,
-                'active' => true,
-            ]
+                'name'      => 'Roles & Permissions',
+                'icon'      => 'fas fa-lock',
+                'order'     => 1,
+                'active'    => true,
+            ],
         ];
     }
 }

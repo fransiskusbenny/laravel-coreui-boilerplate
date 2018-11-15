@@ -14,30 +14,31 @@ class Menu extends Model
     protected $guard_name = 'web';
 
     protected $fillable = [
-        'name', 'url', 'icon', 'active', 'order'
+        'name', 'url', 'icon', 'active', 'order',
     ];
 
     protected $dates = [
-        'deleted_at'
+        'deleted_at',
     ];
 
     protected $with = [
-        'permissions'
+        'permissions',
     ];
 
     protected $casts = [
-        'active' => 'boolean'
+        'active' => 'boolean',
     ];
 
     public function parent()
     {
-        return $this->belongsTo(Menu::class, 'parent_id');
+        return $this->belongsTo(self::class, 'parent_id');
     }
 
     /**
-     * Determinte if user can access current menu
+     * Determinte if user can access current menu.
      *
      * @param User $user
+     *
      * @return bool
      */
     public function isAccessibleBy(User $user)
@@ -48,11 +49,12 @@ class Menu extends Model
 
         if ($this->permissions()->count()) {
             $permissions = $this->getAllPermissions()->pluck('name')->toArray();
+
             return $user->hasAnyPermission($permissions);
         }
 
         if ($this->childs()->exists()) {
-            return !$this->childs->map->isAccessibleBy($user)->every(function($accessbily) {
+            return !$this->childs->map->isAccessibleBy($user)->every(function ($accessbily) {
                 return !$accessbily;
             });
         }
@@ -62,7 +64,7 @@ class Menu extends Model
 
     public function childs()
     {
-        return $this->hasMany(Menu::class, 'parent_id')
+        return $this->hasMany(self::class, 'parent_id')
             ->with('childs', 'parent');
     }
 }
